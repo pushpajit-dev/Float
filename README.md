@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://i.imgur.com/JJOomaL.jpeg" alt="Gemini_Generated_Image_nnf2pdnnf2pdnnf2-clean" width="100%" style="max-width: 850px; border-radius: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);" />
+</p>
+
 # Float
 
 <p align="center">
@@ -7,8 +11,29 @@
 </p>
 
 <p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-8D6E63?style=for-the-badge" alt="Apache 2.0 license"></a>
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Android%20%7C%20Web-6D4C41?style=for-the-badge" alt="Platform"></a>
+  <img src="https://img.shields.io/badge/Theme-Material%203%20Beige%20%26%20Brown-A1887F?style=for-the-badge" alt="Material 3"></a>
+  <img src="https://img.shields.io/badge/Tunnel-Pinggy%20SSH-5D4037?style=for-the-badge" alt="Tunnel"></a>
+</p>
+
+<p align="center">
   <code>#file-transfer</code> &nbsp;<code>#self-hosted</code> &nbsp;<code>#local-network</code> &nbsp;<code>#android</code> &nbsp;<code>#windows</code> &nbsp;<code>#material3</code> &nbsp;<code>#privacy-first</code>
 </p>
+
+---
+
+## 🚀 Downloads (Latest Windows Releases)
+
+Get started immediately with the prebuilt binaries for Windows (64-bit):
+
+| Release Type | Description | Download Link |
+| :--- | :--- | :--- |
+| **Windows Setup Installer** | Full desktop installer (`.exe`) with desktop & start menu shortcuts, auto-updater ready | [📥 **Download Float Installer (.exe)**](https://drive.google.com/file/d/1RL5JlWNJd7oFseWbyJc2B-_kidzDu7xD/view?usp=drive_link) |
+| **Windows Portable** | Zero-installation standalone archive (`.zip`) — extract anywhere and run immediately | [📦 **Download Float Portable (.zip)**](https://drive.google.com/file/d/1Fl3Bbs4qfs2c5W4c4a1VbXKYUU7Afvvo/view?usp=drive_link) |
+
+> [!TIP]
+> **Quick Launch**: For the portable edition, simply extract the ZIP file to any folder and double-click `float.exe` (or `meghxl-server.exe`). No administrative rights required!
 
 ---
 
@@ -20,21 +45,31 @@ Drop a file into the desktop dashboard or your phone app, and it instantly syncs
 
 ---
 
-## Key Features
+## ✨ Key Features
 
-- **Cross-Platform**: Native Android App, Windows Desktop App (Tauri / Bun executable), and responsive Web Dashboard.
-- **Material 3 Design**: Warm Earth, Caramel & Espresso Brown palette (`#D4A373`, `#1E1915`, `#14110E`).
-- **Bidirectional QR Pairing**: Scan a QR code on PC with the phone to instantly establish authenticated pairing and exchange Hardware Trace IDs.
-- **Remote Drive Explorer**: Browse, read, stream, and **write** directly to PC local disks (`C:\`, `D:\`, Desktop, Downloads) from your phone, and browse Android storage from your PC.
-- **Local & Online Modes**:
-  - **Local Mode**: Blazing fast zero-cloud LAN transfers with mDNS service discovery.
-  - **Online Tunnel Mode**: Pure-Java SSH reverse tunneling via Pinggy and Localhost.run over HTTPS port 443 — bypasses telecom/ISP NATs without port forwarding.
-- **Private & Ephemeral Transfers**: Password/secret-key protected files, self-destructing links, and one-time downloads.
-- **Built-in Media Streamer**: Live audio/video range streaming and inline image viewer.
+- **📱 Cross-Platform Suite**:
+  - **Native Android App**: Pure Kotlin with Jetpack Components, dynamic camera QR scanner, and background server service.
+  - **Windows Desktop App**: High-performance Tauri + Rust desktop shell paired with compiled baseline binary.
+  - **Modern Web Dashboard**: Responsive HTML5/ES6 application accessible from any browser on your network.
+- **🎨 Material 3 Warm Earth / Brown Palette**:
+  - Custom themed with Beige, Caramel, Sand, and Espresso Brown (`#D4A373`, `#1E1915`, `#14110E`).
+- **🔗 Bidirectional QR Pairing**:
+  - Scan the PC's pairing QR code with your phone (or vice-versa) to instantly link hardware IDs and authenticate without passwords.
+- **📂 Remote PC Drive Explorer**:
+  - Browse, read, stream, and **write** directly to PC local storage (`C:\`, `D:\`, Desktop, Documents, Downloads) directly from your mobile phone.
+  - Browse phone storage directly from the PC dashboard.
+- **🌐 Dual Connectivity (Local & Global)**:
+  - **Local Mode**: Ultra-fast zero-cloud LAN transfers with mDNS automatic discovery.
+  - **Online Tunnel Mode**: Pure-Java SSH reverse tunneling via Pinggy and Localhost.run over HTTPS port 443 — bypasses telecom/carrier NATs without port forwarding.
+- **🔒 Private & Ephemeral Transfers**:
+  - Password and secret-key protected files.
+  - Self-destructing links and single-use downloads.
+- **🎬 Built-in Media Streaming**:
+  - Stream large audio and video files with HTTP byte-range seeking without waiting for full downloads.
 
 ---
 
-## Project Structure
+## 📁 Repository Structure
 
 ```
 float/
@@ -58,13 +93,13 @@ float/
 
 ---
 
-## Getting Started
+## 🛠️ Building & Development
 
 ### 1. Web & Server (Node.js / Bun)
 ```bash
 # Clone the repository
-git clone https://github.com/pushpajit-dev/float.git
-cd float
+git clone https://github.com/pushpajit-dev/Float.git
+cd Float
 
 # Install dependencies
 npm install
@@ -77,7 +112,7 @@ npm start
 ### 2. Android App
 1. Open the `android/` directory in **Android Studio Ladybug / Koala**.
 2. Sync Gradle files (JDK 17+ recommended).
-3. Run or assemble the APK:
+3. Build the APK:
    ```bash
    cd android
    ./gradlew assembleDebug
@@ -92,15 +127,16 @@ npm start
 
 ---
 
-## Security & Privacy
+## 🛡️ Security & Privacy
 
-- **Local Network Default**: Files never touch external servers during Local Mode.
-- **No Cloud Accounts**: No third-party account registration, cookies, or telemetry tracking.
-- **Memory-Safe Transfers**: Streaming file pipelines prevent RAM bloat even when transferring multi-gigabyte videos or ISOs.
+- **Local Network Default**: Files never touch external cloud servers during Local Mode.
+- **Zero Cloud Accounts**: No third-party account registration, no telemetry, no tracking cookies.
+- **Memory-Safe Streaming**: Streaming file pipelines prevent RAM bloat even when transferring multi-gigabyte files.
+- **Hardware Trace Pairing**: Pairing requests exchange cryptographic hardware IDs before granting remote file system permissions.
 
 ---
 
-## Author & Attribution
+## 👤 Author & Attribution
 
 - **Developer**: NoishiXzen ([pushpajit-dev](https://github.com/pushpajit-dev))
 - **Email**: noishixzen@gmail.com
