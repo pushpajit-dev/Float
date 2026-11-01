@@ -33,7 +33,7 @@ Get started immediately with the prebuilt binaries for Windows (64-bit):
 | **Windows Portable** | Zero-installation standalone archive (`.zip`) — extract anywhere and run immediately | [📦 **Download Float Portable (.zip)**](https://drive.google.com/file/d/1Fl3Bbs4qfs2c5W4c4a1VbXKYUU7Afvvo/view?usp=drive_link) |
 
 > [!TIP]
-> **Quick Launch**: For the portable edition, simply extract the ZIP file to any folder and double-click `float.exe` (or `meghxl-server.exe`). No administrative rights required!
+> **Quick Launch**: For the portable edition, simply extract the ZIP file to any folder and double-click `float.exe` No administrative rights required!
 
 ---
 
