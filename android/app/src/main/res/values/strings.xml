@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Float</string>
+    <string name="app_sub">Local transfer</string>
+    <string name="developer_name">NoishiXzen</string>
+    <string name="developer_email">noishixzen@gmail.com</string>
+    <string name="feedback_subject">Issues of Float app Android</string>
+    <string name="more_apps_url">https://aivorygen.netlify.app</string>
+    <string name="github_url">https://github.com/pushpajit-dev</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_dashboard">Hub</string>
+    <string name="tab_send">Send</string>
+    <string name="tab_explorer">Drives</string>
+    <string name="tab_messages">Chat</string>
+    <string name="tab_devices">Devices</string>
+    <string name="tab_settings">Settings</string>
+
+    <string name="explorer_title">Drives &amp; Storage</string>
+    <string name="search_hint">Search files across drives &amp; SD card…</string>
+    <string name="rename_file_hint">Rename file display details…</string>
+    <string name="attach_file">Attach File</string>
+    <string name="opt_private">Private Link (Protected)</string>
+    <string name="opt_public">Public to Everyone</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_start">Get Started</string>
+    <string name="onboarding_1_title">Fast Local Transfer</string>
+    <string name="onboarding_1_desc">Share files seamlessly across phones and PCs on local Wi-Fi without accounts or size limits.</string>
+    <string name="onboarding_2_title">Online Sharing</string>
+    <string name="onboarding_2_desc">Connect securely from mobile data or external networks with zero router configuration.</string>
+    <string name="onboarding_3_title">Instant QR Connect</string>
+    <string name="onboarding_3_desc">Point phone camera to QR code on PC or mobile to transfer and download directly.</string>
+
+    <!-- Dashboard -->
+    <string name="mode_local">Local</string>
+    <string name="mode_online">Online</string>
+    <string name="status_hosting_local">Hosting on Local Wi-Fi</string>
+    <string name="status_tunnel_active">Online Active</string>
+    <string name="status_server_stopped">Server Stopped</string>
+    <string name="copy_link">Copy</string>
+    <string name="share_link">Share</string>
+    <string name="show_qr">QR Code</string>
+    <string name="scan_qr">Scan</string>
+    <string name="active_devices">Active Devices</string>
+    <string name="shared_files">Shared Files</string>
+    <string name="no_files_shared">No files shared yet</string>
+
+    <!-- Send -->
+    <string name="cat_all">All</string>
+    <string name="cat_images">Images</string>
+    <string name="cat_videos">Videos</string>
+    <string name="cat_audio">Audio</string>
+    <string name="cat_docs">Docs</string>
+    <string name="cat_apks">APKs</string>
+    <string name="dropzone_title">Select Files to Send</string>
+    <string name="dropzone_hint">Tap to browse media, docs or folders</string>
+    <string name="send_dest_everyone">Everyone (Public)</string>
+    <string name="send_dest_private">Private Link</string>
+    <string name="opt_onetime">One-time Download</string>
+    <string name="opt_expiry">Expiry: </string>
+    <string name="opt_expiry_never">Never</string>
+    <string name="opt_expiry_5m">5 min</string>
+    <string name="opt_expiry_1h">1 hour</string>
+    <string name="opt_expiry_1d">1 day</string>
+    <string name="btn_send">Send Now</string>
+    <string name="note_placeholder">Add private note (optional)…</string>
+
+    <!-- Messages -->
+    <string name="msg_placeholder">Type a message or paste clipboard…</string>
+    <string name="msg_empty">No messages yet. Post to everyone or peer devices.</string>
+
+    <!-- Devices -->
+    <string name="devices_empty">No other Float devices detected yet.</string>
+    <string name="btn_add_device">Add IP</string>
+
+    <!-- Settings & About -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_server_port">Server Port</string>
+    <string name="settings_device_name">Device Name</string>
+    <string name="settings_autostart">Auto-start Server</string>
+    <string name="settings_sessions">Session Management</string>
+    <string name="settings_save_session">Save Session</string>
+    <string name="settings_load_session">Load Session</string>
+    <string name="about_title">About Float</string>
+    <string name="about_desc">Transfer anything across local network and tunnels. Developed by NoishiXzen. Powered by MeghXL system &amp; core.</string>
+    <string name="btn_feedback">Send Feedback</string>
+    <string name="btn_more_apps">More Apps</string>
+</resources>

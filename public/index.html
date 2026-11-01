@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <title>Float — transfer anything on your network</title>
+  <meta name="theme-color" content="#6d8bff" />
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="/styles.css?v=9" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="app-side">
+      <div class="app-brand">
+        <span class="app-logo"><img src="/icon-192.png" alt="Float" width="30" height="30" style="border-radius:8px;display:block;" /></span>
+        <span class="app-brand-text"><b>Float</b><span class="sub">Local transfer</span></span>
+      </div>
+
+      <div class="network-mode-box" style="margin: 10px 14px 14px; padding: 6px; background: rgba(255,255,255,0.04); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:11px; font-weight:600; color:var(--fg-dim, #94a3b8); text-transform:uppercase; letter-spacing:0.05em;">
+          <span>Mode</span>
+          <span id="mode-status-pill" style="font-size:10px; padding:1px 6px; border-radius:10px; background:rgba(255,255,255,0.08); color:#cbd5e1;">Local</span>
+        </div>
+        <div class="seg full" style="margin:0;">
+          <button id="mode-btn-local" class="seg-btn active" type="button" style="padding:4px 8px; font-size:12px;">Local</button>
+          <button id="mode-btn-online" class="seg-btn" type="button" style="padding:4px 8px; font-size:12px;"><svg class="ic" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>Online</button>
+        </div>
+      </div>
+
+      <nav class="app-nav-list">
+        <button class="app-nav active" data-view="dashboard" type="button"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span>Dashboard</span></button>
+        <button class="app-nav" data-view="send" type="button"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21.7a.5.5 0 0 0 .9 0l6.5-19a.5.5 0 0 0-.6-.6l-19 6.5a.5.5 0 0 0 0 .9l7.9 3.2a2 2 0 0 1 1.1 1.1z"/><path d="m21.9 2.1-11 11"/></svg><span>Send</span></button>
+        <button class="app-nav" data-view="private" type="button"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Private</span><span class="nav-badge" id="private-badge" hidden></span></button>
+        <button class="app-nav" data-view="devices" type="button"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg><span>Float devices</span><span class="nav-count" id="nav-device-count">1</span></button>
+        <button class="app-nav" data-view="tunnel" id="nav-tunnel" type="button" hidden><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg><span>Tunnel Host</span><span class="nav-badge" id="tunnel-badge" style="background:#10b981; color:#fff;">LIVE</span></button>
+        <button class="app-nav" data-view="about" type="button"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span>About</span><span class="nav-badge" id="about-badge" hidden>1</span></button>
+        <a class="app-nav" id="nav-admin" href="/admin" hidden><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg><span>Host console</span></a>
+      </nav>
+
+      <div class="app-side-foot">
+        <button id="join-btn" class="btn ghost small full" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>Add a device</button>
+        <div class="side-me" id="side-me"><span class="dot" id="side-dot"></span><span id="side-me-name">This Float device</span></div>
+        <div class="side-addr" id="side-addr" title="This hub's address on your network" hidden></div>
+        <a class="gh-star" href="https://github.com/pushpajit-dev" target="_blank" rel="noopener" title="Float on GitHub">
+          <svg class="ic" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Float on GitHub
+        </a>
+      </div>
+    </aside>
+
+    <main class="app-main">
+      <!-- ===== DASHBOARD ===== -->
+      <section class="view" data-view="dashboard">
+        <h1 class="view-h">Dashboard</h1>
+        <p class="view-sub">Public files shared on your network — newest first.</p>
+        <div id="announce-cards" class="announce-cards"></div>
+        <div id="public-list" class="file-list"></div>
+        <p id="public-empty" class="empty">Nothing shared yet. Open <b>Send</b> and share a file with <b>Everyone</b> — it appears here on every device, live.</p>
+
+        <h2 class="section-title" style="margin-top:26px"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Messages</h2>
+        <p class="view-sub">The shared clipboard — anyone on the network can post and read.</p>
+        <div id="note-list" class="note-list"></div>
+        <p id="note-empty" class="empty">No messages yet. Open <b>Send → Message</b> and post to <b>Everyone</b>.</p>
+      </section>
+
+      <!-- ===== SEND ===== -->
+      <section class="view" data-view="send" hidden>
+        <h1 class="view-h">Send</h1>
+        <p class="view-sub">Share with everyone, send privately to one device, or post a message.</p>
+
+        <div class="seg" id="send-tabs" role="group">
+          <button class="seg-btn active" data-sendtab="files" type="button"><svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>Files &amp; folders</button>
+          <button class="seg-btn" data-sendtab="message" type="button"><svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>Message</button>
+        </div>
+
+        <!-- Files tab -->
+        <div data-tab="files">
+          <section id="dropzone" class="dropzone" tabindex="0" aria-label="Drop files to share">
+            <input id="file-input" type="file" multiple hidden />
+            <div class="dropzone-inner">
+              <div class="dropzone-icon"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13v8"/><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="m8 17 4-4 4 4"/></svg></div>
+              <p class="dropzone-title">Drop files here</p>
+              <p class="dropzone-sub">or <button id="browse-btn" class="link" type="button">browse files</button> · paste from clipboard · or drop a whole batch</p>
+            </div>
+          </section>
+
+          <div class="send-opts">
+            <label class="opt"><span>Send to</span>
+              <select id="send-dest"></select>
+            </label>
+            <label class="opt" id="expiry-opt"><span>Expires</span>
+              <select id="expiry">
+                <option value="0">Never</option>
+                <option value="5">5 min</option>
+                <option value="60">1 hour</option>
+                <option value="1440">1 day</option>
+              </select>
+            </label>
+            <label class="opt checkbox" id="onetime-opt">
+              <input type="checkbox" id="onetime" />
+              <span><svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>One-time</span>
+            </label>
+          </div>
+
+          <textarea id="send-note" class="msg-box" rows="2" maxlength="2000" placeholder="Add a private note for the recipient (optional)…" hidden></textarea>
+
+          <div id="staged" class="staged" hidden>
+            <div class="staged-head"><span id="staged-count">0 files ready</span><button id="staged-clear" class="link" type="button">clear</button></div>
+            <div id="staged-list" class="staged-list"></div>
+          </div>
+
+          <button id="send-btn" class="btn send-btn" type="button" disabled><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21.7a.5.5 0 0 0 .9 0l6.5-19a.5.5 0 0 0-.6-.6l-19 6.5a.5.5 0 0 0 0 .9l7.9 3.2a2 2 0 0 1 1.1 1.1z"/><path d="m21.9 2.1-11 11"/></svg><span id="send-btn-label">Send</span></button>
+
+          <section id="uploads" class="uploads" hidden aria-label="Active uploads"></section>
+
+          <h2 class="section-title" style="margin-top:28px"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/></svg>Sent history</h2>
+          <div id="sent-list" class="file-list"></div>
+          <p id="sent-empty" class="empty">Nothing sent from this device yet. Files you share — public, private link, or to a device — show up here so you can copy, re-share by QR, or delete them.</p>
+        </div>
+
+        <!-- Message tab -->
+        <div data-tab="message" hidden>
+          <label class="opt block"><span>Send to</span>
+            <select id="msg-dest"></select>
+          </label>
+          <textarea id="msg-input" class="msg-box" rows="3" maxlength="4000" placeholder="Type a note, link, code, or a quick 'thanks!'…"></textarea>
+          <button id="msg-send" class="btn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21.7a.5.5 0 0 0 .9 0l6.5-19a.5.5 0 0 0-.6-.6l-19 6.5a.5.5 0 0 0 0 .9l7.9 3.2a2 2 0 0 1 1.1 1.1z"/><path d="m21.9 2.1-11 11"/></svg>Send message</button>
+        </div>
+      </section>
+
+      <!-- ===== PRIVATE ===== -->
+      <section class="view" data-view="private" hidden>
+        <h1 class="view-h">Private</h1>
+        <p class="view-sub">Files and messages shared with this device — stored only here, never public.</p>
+
+        <h2 class="section-title"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>Received files</h2>
+        <div id="received-list" class="file-list"></div>
+        <p id="received-empty" class="empty">No private files yet. Others can send straight to this device from their <b>Send</b> tab.</p>
+
+        <h2 class="section-title" style="margin-top:26px"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Messages</h2>
+        <div id="dm-list" class="note-list"></div>
+        <p id="dm-empty" class="empty">No private messages yet.</p>
+      </section>
+
+      <!-- ===== DEVICES ===== -->
+      <section class="view" data-view="devices" hidden>
+        <h1 class="view-h">Float devices</h1>
+        <p class="view-sub">Everyone on your network right now. You can rename your own Float device.</p>
+        <div id="device-list" class="device-list"></div>
+        <p id="devices-empty" class="empty">No other Float devices yet — open this page on another PC or phone (same Wi-Fi) and it shows up here.</p>
+      </section>
+
+      <!-- ===== TUNNEL HOST (ONLINE MODE) ===== -->
+      <section class="view" data-view="tunnel" hidden>
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h1 class="view-h">Tunnel Host · Online Mode</h1>
+            <p class="view-sub">Share files across any network or cellular data via Pinggy secure online tunnel.</p>
+          </div>
+          <div id="tunnel-live-indicator" style="display:flex; align-items:center; gap:8px; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:600; background:rgba(212,163,115,0.15); color:#d4a373; border:1px solid rgba(212,163,115,0.3);">
+            <span id="tunnel-indicator-dot" style="width:8px; height:8px; border-radius:50%; background:#d4a373; display:inline-block; box-shadow:0 0 8px #d4a373;"></span>
+            <span id="tunnel-indicator-text">Online (Pinggy Active)</span>
+          </div>
+        </div>
+
+        <div class="about-card" style="margin-top:16px; padding:20px;">
+          <h2 class="section-title" style="margin-top:0;">Public Access Link</h2>
+          <p class="view-sub" style="margin-bottom:12px;">Anyone with this link can view and download public files or send files directly to your Float hub from outside your network.</p>
+          
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <input id="tunnel-url-input" type="text" readonly style="flex:1; min-width:260px; padding:10px 14px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.15); color:#d4a373; font-family:monospace; font-size:14px;" value="Connecting to Pinggy online tunnel..." />
+            <button id="tunnel-copy-btn" class="btn small" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Copy Link</button>
+            <a id="tunnel-open-btn" class="btn small ghost" href="#" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Open</a>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top:16px;">
+          <!-- QR Code Card -->
+          <div class="about-card" style="text-align:center; padding:24px;">
+            <h3 style="margin:0 0 6px; font-size:16px; font-weight:600;">Scan QR to Connect</h3>
+            <p class="view-sub" style="margin-bottom:16px;">Point any smartphone or tablet camera to connect instantly from cellular data or another Wi-Fi.</p>
+            <div style="display:inline-block; padding:12px; background:#ffffff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.3);">
+              <img id="tunnel-qr-img" alt="Tunnel QR Code" width="200" height="200" style="display:block;" />
+            </div>
+            <p id="tunnel-qr-hint" class="view-sub" style="margin-top:12px; font-size:12px;">Pinggy end-to-end encrypted</p>
+          </div>
+
+          <!-- Controls & Info Card -->
+          <div class="about-card" style="padding:24px; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <h3 style="margin:0 0 8px; font-size:16px; font-weight:600;">Tunnel Controls</h3>
+              <p class="view-sub" style="margin-bottom:16px;">Manage your public Pinggy tunnel session.</p>
+              
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <button id="tunnel-stop-btn" class="btn small ghost" type="button" style="color:#d95d39; border-color:rgba(217,93,57,0.3);"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m9 9 6 6"/><path d="m15 9-6 6"/></svg>Stop Tunnel (Go Offline)</button>
+                <button id="tunnel-restart-btn" class="btn small ghost" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>Reconnect / New URL</button>
+              </div>
+            </div>
+
+            <div style="margin-top:20px; padding:12px; background:rgba(255,255,255,0.03); border-radius:8px; border:1px solid rgba(255,255,255,0.06); font-size:12px; color:var(--fg-dim, #94a3b8);">
+              <b style="color:#e2e8f0; display:block; margin-bottom:4px;">How Online Mode works:</b>
+              Float routes traffic through a zero-configuration Pinggy HTTPS tunnel over port 443. No router port forwarding or public IP is required. The connection is terminated as soon as you toggle back to Local.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ABOUT ===== -->
+      <section class="view" data-view="about" hidden>
+        <h1 class="view-h">About Float</h1>
+        <p class="view-sub">Transfer anything across your local network — instantly, privately, at any size.</p>
+
+        <div class="about-hero">
+          <img class="about-logo" src="/icon-192.png" alt="Float" width="64" height="64" style="border-radius:14px;display:block;" />
+          <div>
+            <div class="about-name">Float <span class="about-ver" id="about-version">—</span></div>
+            <p class="about-tag">Developed by <b>NoishiXzen</b> · open source under the Apache&nbsp;2.0 licence</p>
+          </div>
+        </div>
+
+        <h2 class="section-title">Developer & Contact</h2>
+        <div class="about-card about-links">
+          <a class="btn small" href="mailto:noishixzen@gmail.com"><svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>noishixzen@gmail.com</a>
+          <a class="btn small ghost" href="https://github.com/pushpajit-dev" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>GitHub Profile</a>
+          <a class="btn small ghost" href="https://aivorygen.netlify.app" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>More Apps (aivorygen)</a>
+        </div>
+
+
+        <h2 class="section-title">Terms & Conditions / Logo Use</h2>
+        <div class="about-card">
+          <p class="about-tag" style="margin-bottom:8px">Float is licensed under the Apache License 2.0. The Float name and logo are trademarks of NoishiXzen. Core file-transfer functionality is powered by the MeghXL system and core.</p>
+          <div class="about-links">
+            <a class="btn small ghost" href="https://github.com/pushpajit-dev" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn small ghost" href="https://aivorygen.netlify.app" target="_blank" rel="noopener">More Apps</a>
+            <a class="btn small ghost" href="mailto:noishixzen@gmail.com">Contact</a>
+          </div>
+        </div>
+
+        <p class="about-foot">No accounts, no cloud, no telemetry. Your files never leave your network. Powered by MeghXL system & core.</p>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close type="button" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      <h3 id="modal-title">Scan to download</h3>
+      <img id="modal-qr" alt="QR code" width="256" height="256" />
+      <p class="modal-hint">Point your phone's camera at the code</p>
+      <p id="modal-url" class="modal-url" hidden></p>
+      <button id="modal-reveal" class="link-btn" type="button">Show link</button>
+      <button id="modal-copy" class="btn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Copy link</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/app.js?v=12"></script>
+</body>
+</html>

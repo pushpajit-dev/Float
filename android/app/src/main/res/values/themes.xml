@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme with Material 3 Dark / Pixel design -->
+    <style name="Theme.Float" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Brand colors -->
+        <item name="colorPrimary">@color/float_emerald</item>
+        <item name="colorOnPrimary">@color/text_on_emerald</item>
+        <item name="colorPrimaryContainer">@color/float_emerald_container</item>
+        <item name="colorOnPrimaryContainer">@color/float_emerald_light</item>
+
+        <item name="colorSecondary">@color/float_emerald_light</item>
+        <item name="colorOnSecondary">@color/text_on_emerald</item>
+
+        <item name="android:colorBackground">@color/float_bg</item>
+        <item name="colorSurface">@color/float_surface</item>
+        <item name="colorSurfaceVariant">@color/float_surface_variant</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+
+        <!-- Status & Navigation bar -->
+        <item name="android:statusBarColor">@color/float_bg</item>
+        <item name="android:navigationBarColor">@color/float_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+
+    <!-- Splash Screen Theme (clean dark, no action bar) -->
+    <style name="Theme.Float.Splash" parent="Theme.Float">
+        <item name="android:windowBackground">@color/float_bg</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <!-- Rounded Button Style -->
+    <style name="Widget.Float.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">14dp</item>
+        <item name="backgroundTint">@color/float_emerald</item>
+        <item name="android:textColor">@color/text_on_emerald</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!-- Outlined Button Style -->
+    <style name="Widget.Float.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">14dp</item>
+        <item name="strokeColor">@color/float_card_border</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!-- Card Style -->
+    <style name="Widget.Float.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardBackgroundColor">@color/float_card</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/float_card_border</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+</resources>

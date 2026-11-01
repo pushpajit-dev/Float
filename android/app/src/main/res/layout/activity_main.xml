@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/float_bg">
+
+    <!-- Top App Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/float_surface"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- App Logo -->
+        <ImageView
+            android:id="@+id/ivHeaderLogo"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:contentDescription="Float Logo"
+            android:src="@drawable/ic_float_logo" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/app_name"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Spacer -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Mode Pill (Local / Online) -->
+        <LinearLayout
+            android:id="@+id/pillModeToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_pill"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:id="@+id/ivModeIcon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_wifi"
+                app:tint="@color/float_emerald" />
+
+            <TextView
+                android:id="@+id/tvModeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mode_local"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Fan Status Indicator (Green rotating when active, Red when stopped) -->
+        <FrameLayout
+            android:id="@+id/layoutFanStatus"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_pill"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/ivFanStatus"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="Server Status Fan"
+                android:src="@drawable/ic_fan"
+                app:tint="@color/float_fan_green" />
+        </FrameLayout>
+
+        <!-- QR Scanner Button -->
+        <ImageButton
+            android:id="@+id/btnScanQr"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bg_pill"
+            android:contentDescription="Scan QR Code"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_qr_scan"
+            app:tint="@color/text_primary" />
+    </LinearLayout>
+
+    <!-- Divider below Top Bar -->
+    <View
+        android:id="@+id/topBarDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/float_divider"
+        app:layout_constraintTop_toBottomOf="@id/topBar" />
+
+    <!-- Content ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tabDivider"
+        app:layout_constraintTop_toBottomOf="@id/topBarDivider" />
+
+    <!-- Divider above Bottom Nav -->
+    <View
+        android:id="@+id/tabDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/float_divider"
+        app:layout_constraintBottom_toTopOf="@id/tabLayoutBottom" />
+
+    <!-- Bottom TabLayout with Material 3 styling (Icon-only, no underline) -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/float_surface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tabGravity="fill"
+        app:tabIconTint="@color/float_emerald"
+        app:tabIndicatorColor="@android:color/transparent"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="fixed"
+        app:tabRippleColor="@color/ripple_dark" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

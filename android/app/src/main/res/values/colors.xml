@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Warm Earth / Caramel / Beige & Espresso Brown Palette -->
+    <!-- Primary Brand Colors -->
+    <color name="float_emerald">#D4A373</color> <!-- Warm Caramel / Soft Beige Gold -->
+    <color name="float_emerald_dark">#BC6C25</color> <!-- Deep Warm Caramel -->
+    <color name="float_emerald_light">#FAEDCD</color> <!-- Warm Pale Beige Cream -->
+    <color name="float_emerald_container">#3B2C20</color> <!-- Dark Mocha Container -->
+    <color name="float_emerald_glow">#33D4A373</color>
+    <color name="float_cyan">#C28B5B</color> <!-- Warm Cinnamon Accent -->
+
+    <!-- Status & Indicator colors -->
+    <color name="float_fan_green">#D4A373</color> <!-- Active Warm Beige -->
+    <color name="float_fan_red">#D95D39</color> <!-- Rust Terracotta -->
+    <color name="float_fan_orange">#E09F3E</color> <!-- Amber Bronze Setting Up -->
+
+    <!-- Dark Surface & Backgrounds (Material 3 Espresso / Mocha Brown) -->
+    <color name="float_bg">#14110E</color> <!-- Deep Espresso -->
+    <color name="float_surface">#1E1915</color> <!-- Roasted Mocha Surface -->
+    <color name="float_surface_variant">#28211B</color>
+    <color name="float_card">#231C17</color> <!-- Mocha Card Surface -->
+    <color name="float_card_border">#3D332A</color> <!-- Warm Earth Border -->
+    <color name="float_divider">#332B23</color>
+
+    <!-- Typography -->
+    <color name="text_primary">#F7F3EE</color> <!-- Warm Cream -->
+    <color name="text_secondary">#A69B8D</color> <!-- Warm Sand -->
+    <color name="text_muted">#786E61</color>
+    <color name="text_on_emerald">#14110E</color>
+
+    <!-- System & Translucent -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="ripple_dark">#26D4A373</color>
+</resources>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/float_surface"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_pill" />
+
+    <TextView
+        android:id="@+id/tvQrSheetTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_qr"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvQrSheetSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="Scan with another Float device or phone camera to connect"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <!-- QR Code Container Card (clean white background for high contrast scanning) -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginVertical="24dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/ivQrCodeImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:contentDescription="QR Code"
+            android:scaleType="fitCenter" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- URL Display Pill -->
+    <TextView
+        android:id="@+id/tvQrSheetUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_pill"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp"
+        android:text="http://192.168.1.100:8080"
+        android:textColor="@color/float_emerald_light"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnQrCopy"
+            style="@style/Widget.Float.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:text="@string/copy_link"
+            android:textSize="13sp"
+            app:icon="@drawable/ic_copy"
+            app:iconGravity="textStart"
+            app:iconSize="16dp"
+            app:iconTint="@color/text_primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnQrShare"
+            style="@style/Widget.Float.Button"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:text="@string/share_link"
+            android:textSize="13sp"
+            app:icon="@drawable/ic_share"
+            app:iconGravity="textStart"
+            app:iconSize="16dp"
+            app:iconTint="@color/text_on_emerald" />
+    </LinearLayout>
+</LinearLayout>

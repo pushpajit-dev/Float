@@ -1,0 +1,78 @@
+# ==============================================================================
+# Float - GitHub Optimized .gitignore
+# ==============================================================================
+
+# Node dependencies & caches
+node_modules/
+.npm/
+.bun-cache/
+.pnpm-store/
+
+# Build artifacts & compiled binaries
+dist/
+dist_app/
+build/
+release/
+out/
+bin/
+*.exe
+*.dll
+*.so
+*.so.*
+cloudflared
+*.apk
+*.aab
+*.zip
+*.tar.gz
+*.7z
+*.dmg
+*.app
+*.msi
+*.AppImage
+*.deb
+*.rpm
+
+# Android Studio & Gradle
+.gradle/
+.kotlin/
+android/.gradle/
+android/.kotlin/
+android/build/
+android/app/build/
+android/local.properties
+android/*.hprof
+android/.cxx/
+android/captures/
+*.keystore
+*.jks
+
+# Rust / Tauri desktop
+desktop/src-tauri/target/
+desktop/src-tauri/binaries/
+desktop/src-tauri/resources/
+desktop/src-tauri/gen/
+
+# Runtime data & uploads
+uploads/*
+!uploads/.gitkeep
+metadata.json
+metadata.json.tmp
+*.log
+logs/
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
