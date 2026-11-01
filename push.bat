@@ -5,19 +5,17 @@ echo   Float - GitHub Sync ^& Push Script
 echo ========================================================
 echo.
 
-git remote -v
+git status
 echo.
-echo Pushing branch 'main' to GitHub origin...
-git push -u origin main
+echo Pushing branch 'main' to GitHub (https://github.com/pushpajit-dev/Float.git)...
+git push origin main
 
 if %ERRORLEVEL% equ 0 (
     echo.
     echo [SUCCESS] Float repository pushed successfully to GitHub!
 ) else (
     echo.
-    echo [NOTE] If your repository has a different name or URL:
-    echo   git remote set-url origin https://github.com/pushpajit-dev/YOUR_REPO_NAME.git
-    echo   git push -u origin main
+    echo [ERROR] Push failed. Check your internet connection or git credentials.
 )
 echo.
 pause
